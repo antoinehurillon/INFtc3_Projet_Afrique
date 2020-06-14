@@ -1,5 +1,100 @@
-Africa.html
 <!DOCTYPE html>  
 
-Nicholas
-Nicholas
+<script src="leaflet.js"> // Bibliothèque Leaflet : http://leafletjs.com/ </script>
+
+<title>Carte du monde</title>
+<link rel="stylesheet" type="text/css" href="leaflet.css" /> 
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+<meta charset="utf-8">
+  
+<!-- Récupération de la liste des pays au chargement de la page -->
+<body onload="load_data();">
+
+  <h1>Africa</h1>
+  <div>
+  <table> <!-- Tableau pour afficher correctement et au bons emplacements les différentes parties de la page --> 
+        <tr>
+          <td>
+            <h3 id="drapeau" style="margin-right:0em"></h3>
+            <h2 id="description" style="margin-right:1em"></h2>
+          </td>
+
+          <td>         
+            <div id="map" style="margin-bottom:1.4em"></div>     <!-- Zone pour l'insertion de la carte OSM via Leaflet -->
+          </td> 
+         </tr> 
+  </table>
+  <!-- Zone pour l'affichage dynamique des descriptions -->
+ </body>
+
+
+<script>
+
+// Création d'une carte dans la balise div "map",
+// et position de la vue sur un point donné et un niveau de zoom
+var map = L.map('map').setView([4,18], 3);
+
+// Ajout d'une couche de dalles OpenStreetMap
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+     }).addTo(map);
+
+// Fonction appelée au chargement de la page
+function load_data () {
+
+  // objet pour l'envoi d'une requête Ajax
+  var xhr = new XMLHttpRequest();
+
+  // fonction appelée lorsque la réponse à la requête (liste des pays) sera arrivée
+  xhr.onload = function() {
+
+    // transformation des données renvoyées par le serveur
+    // responseText est du type string, data est une liste
+    var data = JSON.parse(this.responseText);
+
+    // boucle sur les lieux
+    for ( n = 0; n < data.length; n++ ) {
+      // insertion d'un marqueur à la position du pays,
+      // attachement d'une popup, capture de l'événement 'clic'
+      // ajout d'une propriété personnalisée au marqueur
+      L.marker([data[n].lat,data[n].lon]).addTo(map)
+       .bindPopup(data[n].name)
+       .addEventListener('click',OnMarkerClick)
+       .name = data[n].name;
+    }
+  };
+
+  // Envoi de la requête Ajax pour la récupération de la liste des pays
+  xhr.open('GET','/location',true);
+  xhr.send();
+}
+
+// Fonction appelée lors d'un clic sur un marqueur
+function OnMarkerClick (e) {
+
+  // objet pour l'envoi d'une requête Ajax
+  var xhr = new XMLHttpRequest();
+
+  // fonction appelée lorsque la réponse à la requête (description d'un pays) sera arrivée
+  xhr.onload = function() {
+
+    // transformation des données renvoyées par le serveur
+    // responseText est du type string, data est un objet
+    var data = JSON.parse(this.responseText);
+
+    // affichage dans la zone 'description' du nom (reprise dans le popup)
+    // et de la description récupérée par l'appel au serveur
+    description.innerHTML =  '<b><i>' + e.target.getPopup().getContent() + '</i></b><br>'+ 'Capital : '+data.capital+'<br>'+'Latitude : '+data.lat +'<br>'+ 'Longitude : '+data.lon +'<br>'+ 'Superficie : '+data.superficie +' Km²'+'<br>'+ 'Plus Grande Ville : '+data.plus_grande_ville +'<br>'+ 'IDH : '+data.idh+'<br>'+'Wikipedia : '+'<a href='+data.wiki+' target="_blank">'+data.name+'</a>';
+    drapeau.innerHTML = '<img src="flags/'+data.drapeau+'.png" alt="Flag of'+data.name+'">';
+
+  };
+
+  // Le numéro du lieu est récupéré via la propriété personnalisée du marqueur
+  var name = e.target.name
+
+  // Envoi de la requête Ajax pour la récupération de la description du pays de numéro idnum
+  xhr.open('GET','/description/'+name,true);
+  xhr.send();
+}
+</script>
