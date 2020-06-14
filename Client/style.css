@@ -5,27 +5,26 @@ body {
   background-repeat: no-repeat;
   background-position: 0, 0;
   background-size: cover;
-  color: white;
-  height: 800px;
-  margin: 0;
-}  /* Add the blur effect */
-  filter: blur(8px);
+  height: 723px
+
+}  
+
 
 /* bandeau de titre */
 h1 { 
   color: white;
   border: none;
   box-shadow: none;
-  background-color: rgba(0,0,0,200.3);
-  border-top: 1px solid rgba(255,255,0,0.6);
-  border-bottom: 1px solid rgba(255,255,255,0.6);
-  margin-top: 1.33em;
+  background-color: rgba(43,111,61,0.9);
+  border-top: 3.5px solid rgba(123,36,28,1);
+  border-bottom: 3.5px solid rgba(123,36,28,1);
+  margin-top: 1em;
   text-shadow: 3px 3px 3px black;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-bottom: 1.33em;
   text-align: center;
-  opacity: 90%;
+  opacity: 100%;
   font-family: "Rockwell", monospace;
 
 }
@@ -48,24 +47,20 @@ body > * {   padding-left: 10px; }
   -o-transition: opacity 1s linear;
 }
 
-h2 { /* Informations relatives à l'affichage du nom du pays */
-  position: fixed;
-  left:700px;
-  right:200px;
+h2 { /* Informations relatives à l'affichage des informations du pays */
+  color: white;
   height: auto;
-  width: 600px;
-  color: rgba(0,0,0);
+  width: 500px;
   line-height: 1.5em;
   font-size: 150%;
   border: none;
-  box-shadow: none;
-  background-color: rgba(239,237,234,0.5);
+  background-color: rgba(43,111,61,0.6);
   border-radius: 30px / 30px;
-  box-shadow: 8px 8px 4px rgba(16,8,0);
-  border-top: 5px solid rgba(121,120,118);
-  border-bottom: 5px solid rgba(121,120,118);
-  border-left: 5px solid rgba(121,120,118);
-  border-right: 5px solid rgba(121,120,118);
+  box-shadow: 5px 5px 3px rgba(16,8,0);
+  border-top: 4.5px solid rgba(123,36,28,1);
+  border-bottom: 4.5px solid rgba(123,36,28,1);
+  border-left: 4.5px solid rgba(123,36,28,1);
+  border-right: 4.5px solid rgba(123,36,28,1);
   margin-top: 1.33em;
   margin-left: 1.5em;
   margin-bottom: 1em;
@@ -74,38 +69,32 @@ h2 { /* Informations relatives à l'affichage du nom du pays */
   padding-bottom: 0.5em
 }
 h3 { /* Informations relatives à l'affichage du nom du pays */
-  position: fixed;
-  left:900px;
-  right:100px;
   height: auto;
-  width: 200px;
+  width: 220px;
   color: rgba(0,0,0);
-  line-height: 1.5em;
-  font-size: 150%;
   border: none;
   box-shadow: none;
-  background-color: rgba(239,237,234,0.5);
+  background-color: rgba(43,111,61,0.6);
   border-radius: 30px / 30px;
-  box-shadow: 8px 8px 4px rgba(16,8,0);
+  box-shadow: 5px 5px 3px rgba(16,8,0);
   border-top: 5px solid rgba(121,120,118);
-  border-bottom: 5px solid rgba(121,120,118);
+  border-bottom: 5px solid rgba(123,36,28,1);
   border-left: 5px solid rgba(121,120,118);
   border-right: 5px solid rgba(121,120,118);
-  margin-top: 1.33em;
-  margin-left: 1.5em;
+  margin-top: 1em;
+  margin-left: 1em;
   margin-bottom: 1em;
   padding-top: 0.5em;
-  padding-left: 1.5em;
-  padding-bottom: 0.5em
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
 }
 #drapeau { /* Propriétés des drapeaux */
-  margin-left: 25px;
-  margin-right: 25px;
-  box-shadow: 3px 3px 2px rgba(16,8,0);
-  border-top: 3px solid rgba(0,0,0);
-  border-bottom: 3px solid rgba(0,0,0);
-  border-left: 3px solid rgba(0,0,0);
-  border-right: 3px solid rgba(0,0,0);
+  text-align: center;
+  box-shadow: 5px 5px 3px rgba(16,8,0);
+  border-top: 3px solid rgba(123,36,28,1);
+  border-bottom: 3px solid rgba(123,36,28,1);
+  border-left: 3px solid rgba(123,36,28,1);
+  border-right: 3px solid rgba(123,36,28,1);
 }
 /* polices de caractères */
 body { font-family: "Trebuchet MS", monospace; }
@@ -119,14 +108,14 @@ a.delete:hover {
 }
 
 #map { /* Propriétés de la carte */
-  height: 600px;
-  width: 600px;
-  border-radius: 30px / 30px;
-  box-shadow: 8px 8px 4px rgba(16,8,0);
-  border-top: 5px solid rgba(121,120,118);
-  border-bottom: 5px solid rgba(121,120,118);
-  border-left: 5px solid rgba(121,120,118);
-  border-right: 5px solid rgba(121,120,118);
+  margin-left: 50px;
+  height: 525px;
+  width: 525px;
+  border-radius: 600px / 50px;
+  border-top: 5px solid rgba(123,36,28,1);
+  border-bottom: 5px solid rgba(123,36,28,1);
+  border-left: 5px solid rgba(123,36,28,1);
+  border-right: 5px solid rgba(123,36,28,1);
 }
 /* Footer */
 
