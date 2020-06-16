@@ -1,6 +1,7 @@
 ﻿
 /* fond de page */
 body {
+  width:100%;
   background-image: url(images/africabg.jpg);
   background-repeat: no-repeat;
   background-position: 0, 0;
